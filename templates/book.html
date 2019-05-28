@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+
+    <div class="card mb-3">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h1 class="card-title">{{ book_details.title }}</h5>
+            <p class="card-text">{{ book_details.author }}</p>
+            <p class="card-text"><small class="text-muted">Publication Year: {{ book_details.publication_year }}</small></p>
+        </div>
+    </div>
+
+    {% if goodreads_response %}
+    <div class="goodreads-reviews">
+        <div class="card mb-3">
+            <img class="card-img-top" src="{{ url_for('static', filename='uploads/goodreads.png') }}" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">Rating Count: {{ goodreads_response.books[0].ratings_count }}</p>
+                <p class="card-text"><small class="text-muted"> Average Rating:  {{ goodreads_response.books[0].average_rating }}</small></p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <hr />
+
+    <div class="reviews">
+    {% if reviews %}
+        {% for review in reviews %}
+           <div class="review alert alert-primary">
+                <header>
+                    {{ review[2] }}
+
+                    <span>Score: {{ review[0] }}</span>
+                </header>
+
+                <p>{{ review[1] }}</p>
+           </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-dark" role="alert">
+            There is no reviews... yet !!!
+        </div>
+    
+    {% endif %}
+    </div>
+
+    {% if user_has_review == False %}
+    <div class="review-user">
+    <hr />
+
+        <h2> Leave a Review... </h2>
+        
+        <form id="review-form" method="POST" action="{{ url_for('show_book', isbn=isbn) }}">
+
+            <ul>
+                <p> Rating: </p>
+                <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>                      
+            </ul>
+            
+            <textarea name="review-description" placeholder="Write your Review..." required></textarea>
+
+            <button class="btn"> Send Review </button>
+
+            <div class="message">
+
+            </div>
+        </form>
+    </div>
+    {% endif %}
+
+    
+{% endblock %}

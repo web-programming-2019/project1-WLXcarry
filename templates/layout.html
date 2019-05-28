@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        
+        {% block styles %}
+            <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+             <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+        {% endblock %}
+    </head>
+    <body>
+        {% include 'header.html' %}
+
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        {% block scripts %}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    register please!
+{% endblock %}
+
+{% block body %}
+    <form action="{{ url_for('login') }}" method="POST">
+
+        <div>
+            <label for="username">Your Username</label>
+            <input type="text" name="username" />
+
+            <label for="pass">Your Password</label>
+            <input type="password" name="pass" />
+        </div>
+        
+        <button> Log In </button>
+        
+    </form>
+{% endblock %}

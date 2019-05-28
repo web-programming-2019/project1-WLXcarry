@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+    <form method="POST" id="search_form" action="{{ url_for('search') }}">
+        <h1>Search!</h1>
+
+        <input type="text" id="search-input" name="search-input"/>
+
+        <button>Search book!</button>
+
+    </form>
+
+    <div class="book-list">
+
+
+    </div>
+    
+{% endblock %}

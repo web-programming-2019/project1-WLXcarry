@@ -1,0 +1,12 @@
+<nav class="nav-menu">
+    <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        {% if session['user_id'] is defined %}
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register_user') }}">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>

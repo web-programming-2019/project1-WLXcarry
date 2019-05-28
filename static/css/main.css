@@ -1,0 +1,107 @@
+@charset "UTF-8";
+body {
+  background-color: white;
+}
+
+.nav-menu ul {
+  display: grid;
+  grid-column-gap: 1fr 1fr;
+}
+.nav-menu ul li {
+  padding: 2em;
+  text-align: center;
+}
+
+.two-columns-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5%;
+}
+.two-columns-container > div {
+  grid-template-areas: "header" "footer";
+  display: flex;
+  flex-direction: column;
+}
+
+form button {
+  grid-area: "footer";
+}
+
+.book-list {
+  margin-top: 2em;
+}
+.book-list ul {
+  list-style: none;
+  padding: 0;
+}
+.book-list ul li {
+  border-top: 1px solid var(--main-line-color);
+  padding: 2em 0;
+}
+
+/****** Style Star Rating Widget *****/
+.rating {
+  border: none;
+  float: left;
+  /***** CSS Magic to Highlight Stars on Hover *****/
+  /* hover previous stars in list */
+}
+.rating > input {
+  display: none;
+}
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "★";
+}
+.rating > .half:before {
+  content: "";
+  position: absolute;
+}
+.rating > label {
+  color: var(--blank-star-color);
+  float: right;
+}
+.rating > input:checked ~ label, .rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
+  color: var(--bg-star-color);
+}
+.rating > input:checked + label:hover, .rating > input:checked ~ label:hover, .rating > label:hover ~ input:checked ~ label, .rating > input:checked ~ label:hover ~ label {
+  color: var(--bg-star-color);
+}
+
+#review-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#review-form textarea {
+  margin-bottom: 2em;
+  height: 115px;
+}
+#review-form .btn {
+  margin: 0 auto;
+}
+
+/* -----------------------------------------    Desktops    ------------------------------------- */
+/* Large Desktop */
+/* Medium Desktop & iPad Pro Landscape */
+/* Small Desktop & Galaxy Tab Landscape */
+/**** Starts mobile *****/
+/* --------------------------------------    Tablets $ Mobile    -------------------------------- */
+/* iPad Pro Portrait & iPad I/II Landscape */
+/* iPad Pro Portrait & iPad I/II Landscape */
+/* Galaxy Tab Portrait */
+/* iPad I/II Portrait */
+/* iPad I/II Portrait */
+/* iPhone 6+ Landscape */
+/* Phone 6 Landscape */
+/* Galaxy S3/S4/S5 Landscape*/
+/* iPhone 5 Landscape */
+/* iPhone 4 Landscape */
+/* iPhone 6+ Portrait */
+/* iPhone 6 Portrait */
+/* iPhone 4/5 & Galaxy S3/S4/S5 Portrait */
+
+/*# sourceMappingURL=main.css.map */
